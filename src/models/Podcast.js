@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const articleSchema = new mongoose.Schema({
+const podcastSchema = new mongoose.Schema({
 	userEmail: String,
 	userName: String,
 	category: String,
@@ -13,5 +13,5 @@ const articleSchema = new mongoose.Schema({
 	storeHash: String
 });
 
-const Article = mongoose.model('Article', articleSchema);
-module.exports = Article;
+const Podcast = mongoose.model('Podcast', podcastSchema);
+module.exports = Podcast;
