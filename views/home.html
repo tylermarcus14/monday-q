@@ -1,7 +1,9 @@
 {% include "partials/header.html" %}
+{% for featured in featured %}
+
 <style>
 .jumbotron {
-  background-image: url("https://pga-tour-res.cloudinary.com/image/upload/c_fill,dpr_2.0,f_auto,g_center,h_478,q_auto,w_850/v1/pgatour/editorial/2018/04/30/tjvogel-847-MinasPanagiotakis-sm.jpg");
+  background-image: url("{{featured.imageURL}}");
   background-size: cover;
   color: white;
 }
@@ -14,9 +16,13 @@
               <div class="col-md-12 order-md-1">
                   <div class="jumbotron p-4 p-md-5">
                     <div class="col-md-6 px-0">
-                      <h1 class="display-4 font-italic">T.J. Vogel Qualifies for 8th Time</h1>
-                      <p class="lead my-3">Bermuda Run, N.C  -  T.J. Vogel carded a five-under-par 66 to qualify for the Wyndham Championship on Monday. This is the eight time Vogel has successfully open qualified for a PGA Tour event this season.</p>
-                      <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Continue reading...</a></p>
+
+                      <h1 class="display-4 font-italic">{{featured.title}}</h1>
+                      <p class="lead my-3">{{featured.snipet}}</p>
+                      <p class="lead mb-0"><a href="/{{featured.category}}/{{featured._id}}" class="text-white font-weight-bold">Continue reading...</a></p>
+                      
+                      {% endfor %}
+
                     </div>
                   </div>
               </div>

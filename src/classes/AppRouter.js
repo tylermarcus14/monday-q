@@ -41,7 +41,27 @@ class AppRouter {
 
 		app.get('/', (req, res, next) => {
 			Article
-				.find()
+				.find({ featured: true })
+				.limit(1)
+				.sort('-dateAdded')
+				.exec(function(err, articles) {
+
+					let featured = [];
+
+					for (let i = 0; i < articles.length; i++) {
+						
+						var snipet = articles[i].article.split(" ").splice(0,16).join(" ");
+
+						featured.push({
+							_id: articles[i]._id,
+							title: articles[i].title,
+							category: articles[i].category,
+							snipet: snipet,
+							imageURL: articles[i].imageURL
+						})
+					}
+			Article
+				.find({ featured: false })
 				.limit(5)
 				.sort('-dateAdded')
 				.exec(function(err, articles) {
@@ -63,9 +83,11 @@ class AppRouter {
 					}
 
 					return res.render('home', {
+						featured: featured,
 						articles: articlesList,
 					});
 				});
+			});
 		});
 		app.get('/pga-tour', (req, res, next) => {
 			Article
@@ -463,6 +485,7 @@ class AppRouter {
 				category: req.body.category,
 				title: req.body.title,
 				article: req.body.article,
+				featured: req.body.featured,
 				imageURL: req.body.url,
 				dateAdded: moment(),
 				storeHash: null

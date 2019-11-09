@@ -8,6 +8,8 @@ const articleSchema = new mongoose.Schema({
 	article: String,
 	imageURL: String,
 	dateAdded: Date,
+	featured: { type: Boolean, default: false },
+	snipet: String,
 	storeHash: String
 });
 
