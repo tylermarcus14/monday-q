@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="icon" href="/public/img/profile.png" type="image/png">
+	<title>monitR</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="/public/css/bootstrap.css">
+	<link rel="stylesheet" href="/public/vendors/linericon/style.css">
+	<link rel="stylesheet" href="/public/vendors/owl-carousel/owl.carousel.min.css">
+	<link rel="stylesheet" href="/public/css/magnific-popup.css">
+	<link rel="stylesheet" href="/public/vendors/nice-select/css/nice-select.css">
+	<link rel="stylesheet" href="/public/vendors/animate-css/animate.css">
+  <link rel="stylesheet" href="/public/vendors/flaticon/flaticon.css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" >
+
+	<!-- main css -->
+	<link rel="stylesheet" href="/public/css/style.css">
+</head>
+<body>
+    <header class="header_area">
+        <div class="main_menu">
+          <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <a class="navbar-brand logo_h" href="/"><img src="/public/img/logo.png" alt=""></a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+               aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                <ul class="nav navbar-nav menu_nav justify-content-end align-self-center">
+                    <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="/register">Register</a></li>
+
+                  </ul>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+   
+   
+   
+  
+<main role="main" class="container">
+        <div class="col-lg-12">
+          <br>
+                <div class="common_style">
+                    <p class="line">Register</p>
+                    <br>
+                    <form action="/register/success" method="post">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" style="color: black;">Create an account</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                          </div>
+                          <div class="modal-body">
+                              <div class="form-group">
+                                <label for="name" class="col-form-label" style="color: gray;">Name</label>
+                                <input type="name" name="name" class="form-control" id="name" placeholder="Name" required="required">
+                              </div>
+                              <div class="form-group">
+                                <label for="email" class="col-form-label" style="color: gray;">Email</label>
+                                <input type="email" name="email" class="form-control" id="email" placeholder="Email" required="required">
+                              </div>
+                              <div class="form-group">
+                                <label for="password" class="col-form-label" style="color: gray;">Password</label>
+                                <input type="password" name="password" class="form-control" id="password" placeholder="Password" required="required">
+                              </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Register</button>
+                          </div>
+                        </div>
+                      </div>
+                      </form>
+                      </div>
+        </div>
+
+      </main>
+
+
+
+
+<!-- <div class="container">
+        <div class="recent_update_inner">
+            <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="products-tab" data-toggle="tab" href="#products" role="tab" aria-controls="products" aria-selected="true">
+                        <span class="lnr lnr-screen"></span>
+                        <h6>Products</h6>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="stores-tab" data-toggle="tab" href="#stores" role="tab" aria-controls="stores"
+                     aria-selected="false">
+                     <span class="lnr lnr-screen"></span>
+                     <h6>Stores</h6>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="logs-tab" data-toggle="tab" href="#logs" role="tab" aria-controls="logs"
+                     aria-selected="false">
+                     <span class="lnr lnr-screen"></span>
+                     <h6>Logs</h6>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings"
+                     aria-selected="false">
+                     <span class="lnr lnr-screen"></span>
+                     <h6>Settings</h6>
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade" id="products" role="tabpanel" aria-labelledby="products-tab">
+                    <div class="row recent_update_text align-items-center">
+                        <div class="col-lg-12">
+                            <div class="common_style">
+                                <p class="line">Products</p>
+                                    <div class="container" style="padding-top: 30px;">
+                                            <div class="row">
+                                              <div class="col-md-12 order-md-1">
+                                                <h4 class="mb-3">Text Alerts</h4>
+                                                <form action="/settings/update" method="post">
+                                                  <div class="row">
+                                                    <div class="col-md-12 mb-3">
+                                                      <label>Phone #</label>
+                                                      <input type="text" class="form-control" name="webhook_url_discord" placeholder="" value="{{settings.discord.webhook_url}}">
+                                                      <a href="/settings/sms/test" style="margin-top: 30px; float: right;">Test</a>
+                                                    </div>
+                                                  </div>
+                                                  <hr class="mb-4">
+                                                  <h4 class="mb-3">Slack</h4>
+                                                  <div class="row">
+                                                    <div class="col-md-12 mb-3">
+                                                      <label>Webhook URL</label>
+                                                      <input type="text" class="form-control" name="webhook_url_slack" placeholder="" value="{{settings.slack.webhook_url}}">
+                                                      <a href="/settings/slack/test" style="margin-top: 30px; float: right;">Test Webhook</a>
+                                                    </div>
+                                                  </div>
+                                          
+                                                  <hr class="mb-4">
+                                          
+                                                  <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" name="discordActive" id="discordActive" {{settings.discord.active}}>
+                                                    <label class="custom-control-label" for="discordActive">Text Alerts</label>
+                                                  </div>
+                                                  <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" name="slackBotActive" id="slackBotActive" {{settings.slack.active}}>
+                                                    <label class="custom-control-label" name="slackBotActive" for="slackBotActive">Slack</label>
+                                                  </div>
+                                          
+                                          
+                                                  <hr class="mb-4">
+                                          
+                                                  <input name="port" type="hidden" value="{{settings.port}}" />
+                                                  <input name="mongodb_uri" type="hidden" value="{{settings.mongodb_uri}}" />
+                                          
+                                                  <button class="btn btn-primary btn-lg btn-block" type="submit">Save Changes</button>
+                                                </form>
+                                              </div>
+                                            </div>
+                                          </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="stores" role="tabpanel" aria-labelledby="stores-tab">
+                    <div class="row recent_update_text align-items-center">
+                        <div class="col-lg-12">
+                            <div class="common_style">
+                                <p class="line">Stores</p>
+
+                                    <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow" style="background-color: #0fb9efcf;">
+                                            <a class="btn btn-sm btn btn-outline-light" href="#" data-toggle="modal" data-target="#addModal" style="margin-right: 20px;">Add Store</a>
+                                        
+                                        
+                                            <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <form action="/stores/add" method="post">
+                                              <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                  <div class="modal-header">
+                                                    <h5 class="modal-title" style="color: black;">New Store</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                      </button>
+                                                  </div>
+                                                  <div class="modal-body">
+                                                      <div class="form-group">
+                                                        <label for="recipient-name" class="col-form-label" style="color: gray;">Store URL</label>
+                                                        <input type="text" class="form-control" name="url" placeholder="Example: kith.com">
+                                                      </div>
+                                                      <div class="form-group">
+                                                        <label for="recipient-name" class="col-form-label" style="color: gray;">Poll Time (ms)</label>
+                                                        <input type="number" class="form-control" name="pollMS" placeholder="Example: 30000">
+                                                      </div>
+                                        
+                                        
+                                                      <div class="form-group">
+                                                        <label for="message-text" class="col-form-label" style="color: gray;">Proxies (Optional)</label>
+                                                        <textarea class="form-control" name="proxies" placeholder="ip:port&#10;ip:port:username:password" style="margin-top: 0px; margin-bottom: 0px; height: 92px;"></textarea>
+                                                      </div>
+                                                      <div class="form-group">
+                                                        <label for="message-text" class="col-form-label" style="color: gray;">Keywords (Optional)</label>
+                                                        <textarea class="form-control" name="keywords" placeholder="Yeezy&#10;Vans&#10;Jordan" style="margin-top: 0px; margin-bottom: 0px; height: 89px;"></textarea>
+                                                      </div>
+                                                  </div>
+                                                  <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary">Add Store</button>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              </form>
+                                            </div>
+                                            <div class="lh-100">
+                                              <h6 class="mb-0 text-white lh-100">Want to add something new?</h6>
+                                              <small>Monitor specific stores with desired keywords and options to maximize performance.</small>
+                                            </div>
+                                          </div>
+                                        
+                                          <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow" style="background-color: #ef0faacf;">
+                                            <a class="btn btn-sm btn btn-outline-light" href="#" data-toggle="modal" data-target="#importModal" style="margin-right: 20px;">Import File</a>
+                                        
+                                        
+                                            <div class="modal fade" id="importModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                              <form enctype="multipart/form-data" method="post" action="/stores/addFile">
+                                                 <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                       <div class="modal-header">
+                                                          <h5 class="modal-title" style="color: black;">Import Site List</h5>
+                                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                          <span aria-hidden="true">×</span>
+                                                          </button>
+                                                       </div>
+                                                       <div class="modal-body">
+                                                          <div class="form-group">
+                                                             <label for="recipient-name" class="col-form-label" style="color: gray;">Poll Time (ms)</label>
+                                                             <input type="number" class="form-control" name="pollMS" placeholder="Example: 30000">
+                                                          </div>
+                                                          <div class="form-group">
+                                                        <label for="message-text" class="col-form-label" style="color: gray;">Proxies (Optional)</label>
+                                                        <textarea class="form-control" name="proxies" placeholder="ip:port
+                                        ip:port:username:password" style="margin-top: 0px; margin-bottom: 0px; height: 92px;"></textarea>
+                                                      </div>
+                                                      <div class="form-group">
+                                                        <label for="message-text" class="col-form-label" style="color: gray;">Keywords (Optional)</label>
+                                                        <textarea class="form-control" name="keywords" placeholder="Yeezy
+                                        Vans
+                                        Jordan" style="margin-top: 0px; margin-bottom: 0px; height: 89px;"></textarea>
+                                                      </div>
+                                                      <div class="custom-file">
+                                            <input type="file" class="custom-file-input" name="sitelist" id="inputGroupFile02">
+                                            <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+                                          </div>
+                                        
+                                          <label for="recipient-name" class="col-form-label" style="color: gray;">Text File Example</label>
+                                          <pre>
+                                        store.illegalcivilization.com
+                                        shop.dertbag.us
+                                        shop-usa.palaceskateboards.com
+                                        offthehook.ca
+                                        kith.com</pre>
+                                                       </div>
+                                                       <div class="modal-footer">
+                                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                          <button type="submit" class="btn btn-primary">Import</button>
+                                                       </div>
+                                                    </div>
+                                                 </div>
+                                              </form>
+                                        
+                                            </div>
+                                            <div class="lh-100">
+                                              <h6 class="mb-0 text-white lh-100">Have a list?</h6>
+                                              <small>Import multiple websites at once with ease by providing a .txt file with all the sites you want to monitor.</small>
+                                            </div>
+                                          </div>
+                                        
+                                        
+                                          <div class="my-3 p-3 bg-white rounded box-shadow">
+                                            <h6 class="border-bottom border-gray pb-2 mb-0">{{ count }}</h6>
+                                        
+                                            {% for store in stores %}
+                                              <div class="media text-muted pt-3">
+                                                <div alt="32x32" class="mr-2 rounded" style="width: 32px; height: 32px; background-color: {{ store.color }};"></div>
+                                                <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                                                  <div class="d-flex justify-content-between align-items-center w-100">
+                                                    <a href="/store/{{ store._id }}">
+                                                      <strong class="text-gray-dark">{{ store.url }}</strong>
+                                                      <a/>
+                                                    <a href="/store/delete/{{ store._id }}" style="color: red;">Delete</a>
+                                                  </div>
+                                                    <span class="d-block">{{ store.lastItemCount }} Total Items Stored</span>
+                                                </div>
+                                              </div>
+                                            {% endfor %}
+                                        
+                                            <small class="d-block text-right mt-3">
+                                              </small>
+                                          </div>
+                                        </main>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="logs" role="tabpanel" aria-labelledby="logs-tab">
+                
+                    <div class="row recent_update_text align-items-center">
+                        <div class="col-lg-11">
+                            <div class="common_style">
+                                <p class="line">Logs</p>
+                                <main role="main" class="container">
+
+
+
+                                        <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow" style="
+                                            background-color: #9b0fefcf;
+                                            ">
+                                          <a class="btn btn-sm btn btn-outline-light" href="/logs/clear" data-toggle="modal" data-target="#addModal" style="margin-right: 20px;">Clear Logs</a>
+                                      
+                                      
+                                          <div class="lh-100">
+                                            <h6 class="mb-0 text-white lh-100">Too Cluttered?</h6>
+                                            <small>Don't like all this "mumbo jumbo" on your screen? Clear your logs to get a better view of your tasks.</small>
+                                          </div>
+                                        </div>
+                                        <div class="my-3 p-3 bg-white rounded box-shadow">
+                                          <h6 class="border-bottom border-gray pb-2 mb-0">Task Logs</h6>
+                                      
+                                          <pre style="background-color: #d2d2d25c;
+                                          margin-top: 25px;
+                                          color: maroon;
+                                          height: 400px;
+                                          padding: 15px 15px 15px 15px;">{{logs}}</pre>
+                                      
+                                          <small class="d-block text-right mt-3"></small>
+                                        </div>
+                                      </main>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+                        <div class="row recent_update_text align-items-center">
+                            <div class="col-lg-12">
+                                <div class="common_style">
+                                    <p class="line">Settings</p>
+                                        <div class="container" style="padding-top: 30px;">
+                                                <div class="row">
+                                                  <div class="col-md-12 order-md-1">
+                                                    <h4 class="mb-3">Text Alerts</h4>
+                                                    <form action="/settings/update" method="post">
+                                                      <div class="row">
+                                                        <div class="col-md-12 mb-3">
+                                                          <label>Phone #</label>
+                                                          <input type="text" class="form-control" name="webhook_url_discord" placeholder="" value="{{settings.discord.webhook_url}}">
+                                                          <a href="/settings/sms/test" style="margin-top: 30px; float: right;">Test</a>
+                                                        </div>
+                                                      </div>
+                                                      <hr class="mb-4">
+                                                      <h4 class="mb-3">Slack</h4>
+                                                      <div class="row">
+                                                        <div class="col-md-12 mb-3">
+                                                          <label>Webhook URL</label>
+                                                          <input type="text" class="form-control" name="webhook_url_slack" placeholder="" value="{{settings.slack.webhook_url}}">
+                                                          <a href="/settings/slack/test" style="margin-top: 30px; float: right;">Test Webhook</a>
+                                                        </div>
+                                                      </div>
+                                              
+                                                      <hr class="mb-4">
+                                              
+                                                      <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" name="discordActive" id="discordActive" {{settings.discord.active}}>
+                                                        <label class="custom-control-label" for="discordActive">Text Alerts</label>
+                                                      </div>
+                                                      <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" name="slackBotActive" id="slackBotActive" {{settings.slack.active}}>
+                                                        <label class="custom-control-label" name="slackBotActive" for="slackBotActive">Slack</label>
+                                                      </div>
+                                              
+                                              
+                                                      <hr class="mb-4">
+                                              
+                                                      <input name="port" type="hidden" value="{{settings.port}}" />
+                                                      <input name="mongodb_uri" type="hidden" value="{{settings.mongodb_uri}}" />
+                                              
+                                                      <button class="btn btn-primary btn-lg btn-block" type="submit">Save Changes</button>
+                                                    </form>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div> -->
+    
+<!--================End Data Area =================-->
+
+<!-- Bootstrap core JavaScript
+   ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script>
+  window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+<script>
+setInterval(function() {
+  var dataStamp = $('#startTime').text();
+
+  $('#uptime').text('Started ' + moment(dataStamp, 'x').fromNow())
+}, 1000);
+</script>
+{% include "partials/footer.html" %}

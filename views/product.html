@@ -1,0 +1,133 @@
+{% include "partials/dashnav.html" %}
+
+<main role="main" class="container">
+    <div class="col-lg-12">
+
+        <div class="common_style">
+  {% if needsRestart %}
+  <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow" style="background-color: #efac0fcf;">
+    <a class="btn btn-sm btn btn-outline-light" href="/restart" style="margin-right: 20px;">Restart</a>
+    <div class="lh-100">
+      <h6 class="mb-0 text-white lh-100">Restart Required</h6>
+      <small>In order to apply changes on your tasks, you must restart.</small>
+    </div>
+  </div>
+  {% endif %}
+
+
+<main role="main" class="container">
+    <div class="my-3 p-3 bg-white rounded box-shadow">
+       <!-- <h4 class="border-bottom border-gray pb-2 mb-0" style="text-align: center;"> {{url}} </h4> -->
+       <div class="container" style="padding-top: 30px;">
+          <div class="row">
+             <div class="col-md-12 order-md-1">
+                  <div class="container-fluidf">
+                        <div class="row">
+
+                              <div class="col align-self-start">
+                                    <h4 class="text-left">{{title}}</h4>
+                                 </div>
+                                 <div class="col align-self-start">
+                                       <div class="row text-center">
+                              <img  class="center-block" style="width: 30%;height: auto;" src="{{image}}" onerror="this.src='http://pixelartmaker.com/art/8326519c9fbbbb4.png'"        data-holder-rendered="true">
+                           </div> 
+                        </div> 
+                        </div>
+                        <div class="row">
+                        <h4 class="text-left">{{price}}</h4>
+                        </div>
+                        <div class="row">
+                              <a href="{{url}}" target="_blank">{{url}}</a>                        </div>
+                      </div>
+
+                <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow" style="background-color: #4ea523cf;width: 100%;">
+                   <img src="/public/cal.png" style="width: 30px; margin-right: 10px;">
+                   <div class="lh-100">
+                      <h6 class="mb-0 text-white lh-100">Date Added</h6>
+                      <small id="uptime">{{dateAdded}}</small>
+                   </div>
+                </div>
+                <!-- <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow" style="background-color: #3e6871cf;width: 100%;">
+                   <img src="/public/cart-icon.png" style="
+                      width: 30px;
+                      margin-right: 10px;
+                      ">
+                   <div class="lh-100">
+                      <h6 class="mb-0 text-white lh-100">Last Item Count</h6>
+                      <small id="uptime">{{lastItemCount}}</small>
+                   </div>
+                </div>
+                <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow" style="background-color: #713e3ecf;width: 100%;">
+                   <img src="/public/refresh.png" style="
+                      width: 30px;
+                      margin-right: 10px;
+                      ">
+                   <div class="lh-100">
+                      <h6 class="mb-0 text-white lh-100">Last Item Added</h6>
+                      <a href="{{lastItemAdded}}" style="color: white;"><small id="uptime">{{lastItemAdded}}</small></a>
+                   </div>
+                </div> -->
+                <form action="/store/update/{{_id}}" method="post">
+
+                   <hr class="mb-4">
+                   <h4 class="mb-3">Alert IF:</h4>
+                   <div class="row">
+                      <div class="col-md-12 mb-3">
+                         <div class="row">
+                            <div class="col-md-4 mb-3">
+
+                                 <div class="input-group">
+                                       <input type="text" class="form-control" placeholder="Current Price" aria-label="Desired Price">
+                                       <div class="input-group-append">
+                                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Less than</button>
+                                         <div class="dropdown-menu">
+                                           <a class="dropdown-item" href="#">Less than</a>
+                                           <a class="dropdown-item" href="#">Greater than</a>
+                                         </div>
+                                       </div>
+                                     </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+
+                               <input type="number" class="form-control" name="pollMS" placeholder="Desired Price" value="{{pollMS}}">
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                   <hr class="mb-4">
+                  </form>
+
+                  <form style="padding-top: 16px;" method="post" action="/product/update/{{_id}}">
+                   <button class="btn btn-primary btn-lg btn-block" type="submit">Save Changes</button>
+                  </form>
+                   <form style="padding-top: 16px;" method="get" action="/product/delete/{{_id}}">
+                    <button class="btn btn-danger btn-lg btn-block" type="submit">Delete Product</button>
+                </form>
+             </div>
+          </div>
+       </div>
+       <small class="d-block text-right mt-3">
+       </small>
+    </div>
+   </div>
+
+ </main>
+
+<!-- Bootstrap core JavaScript
+   ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script>
+  window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')
+</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script>
+$('.custom-file-input').on('change',function(){
+  $('.custom-file-label').text($(this).val().replace(/\\/g, '/').replace(/.*\//, ''));
+})
+</script>
+<script>
+      $(".nav li").removeClass("active");
+      $('#products').addClass('active');
+</script>
+{% include "partials/footer.html" %}

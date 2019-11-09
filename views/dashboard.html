@@ -1,0 +1,44 @@
+{% include "partials/header.html" %}
+<main role="main" class="container">
+        <div class="col-lg-12">
+          <div class="common_style">
+            <br>
+            <p class="line">Dashboard</p>
+  
+              <div class="my-3 p-3 bg-white rounded box-shadow">
+          <h4 class="border-bottom border-gray pb-2 mb-0">Quick Links</h4>
+          <a class="btn btn-sm btn btn-outline-dark m-3" href="/posts" role="button" style="margin-right: 20px;">All Posts</a>
+          <a class="btn btn-sm btn btn-outline-dark m-3" href="/results" role="button" style="margin-right: 20px;">All Results</a>
+          <a class="btn btn-sm btn btn-outline-dark m-3" href="/podcasts" role="button" style="margin-right: 20px;">All Podcasts</a>
+          <p>
+          <a class="btn btn-sm btn btn-outline-dark m-3" href="/posts/new" role="button" style="margin-right: 20px;">New Post</a>
+          <a class="btn btn-sm btn btn-outline-dark m-3" href="/results/new" role="button" style="margin-right: 20px;">New Result</a>
+          <a class="btn btn-sm btn btn-outline-dark m-3" href="/podcasts/new" role="button" style="margin-right: 20px;">New Podcast</a>
+          </p>
+        </div>
+
+        </div>
+    </div>
+</main>
+
+
+
+
+<!--================End Data Area =================-->
+
+<!-- Bootstrap core JavaScript
+   ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script>
+  window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+<script>
+setInterval(function() {
+  var dataStamp = $('#startTime').text();
+
+  $('#uptime').text('Started ' + moment(dataStamp, 'x').fromNow())
+}, 1000);
+</script>
+{% include "partials/footer.html" %}

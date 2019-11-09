@@ -1,0 +1,116 @@
+{% include "partials/header.html" %}
+<style>
+#editor-container {
+  height: 975px;
+}
+</style>
+<main role="main" class="container">
+    <div class="col-lg-12">
+
+        <div class="common_style">
+
+
+<main role="main" class="container">
+    <div class="my-3 p-3 bg-white rounded box-shadow">
+       <!-- <h4 class="border-bottom border-gray pb-2 mb-0" style="text-align: center;"> {{url}} </h4> -->
+       <div class="container" style="padding-top: 10px;">
+          <div class="row">
+             <div class="col-md-12 order-md-1">
+               <div class="text-center">
+                <h1 class="mb-3">{{title}}</h1>
+                <p>by {{userEmail}}</p><p>{{dateAdded}}</p>
+                </div>
+                <form action="/post/update/{{_id}}" method="post">
+                   <div class="row">
+                   </div>
+                   <hr class="mb-4">
+                   <div class="row">
+                      <div class="col-md-12 mb-3">
+                                    <img src={{imageURL}}  style=" width: 100%;
+                                    height: 30rem;
+                                    object-fit: contain;" alt="..." />                              <!-- </div> -->
+                      </div>
+                   </div>
+                   <div class="row">
+                        <div class="col-md-9 mb-3">
+                              <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">Article</label>
+                                    <textarea class="form-control" name="articleText1" id="exampleFormControlTextarea1" rows="55">{{article}}</textarea>
+                              </div>
+                              <!-- <div class="form-group">
+                                    <label for="message-text" class="col-form-label" style="color: gray;">Article</label>
+                                    <input name="article" type="hidden">
+                                    <div name="articleText" height="300px" id="editor-container">{{article}}</div>
+                              </div> -->
+                              <hr class="mb-4">
+                              <input name="port" type="hidden" value="3000">
+                              <input name="mongodb_uri" type="hidden" value="mongodb://127.0.0.1:27017">
+                              <button class="btn btn-primary btn-lg btn-block" type="submit">Save Changes</button>
+                              <form style="padding-top: 16px;" method="get" action="/store/delete/{{_id}}">
+                                    <button class="btn btn-danger btn-lg btn-block" type="submit">Delete Article</button>
+                              </form>
+                              </hr>
+                         </div>
+                         <div class="col-md-3 order-md-1">
+                              <a class="twitter-timeline" data-tweet-limit="4" href="https://twitter.com/acaseofthegolf1?ref_src=twsrc%5Etfw">Tweets by acaseofthegolf1</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                         </div>
+
+                </form>
+                        </div>
+                   </div>
+                   
+
+             </div>
+             
+       </div>
+       <small class="d-block text-right mt-3">
+       </small>
+    </div>
+   </div>
+
+ </main>
+
+<!-- Bootstrap core JavaScript
+   ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script>
+  window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')
+</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<script>
+$('.custom-file-input').on('change',function(){
+  $('.custom-file-label').text($(this).val().replace(/\\/g, '/').replace(/.*\//, ''));
+})
+</script>
+<script>
+   $(".nav li").removeClass("active");
+   $('#stores').addClass('active');
+ </script>
+ <script>
+      var quill = new Quill('#editor-container', {
+   modules: {
+     toolbar: [
+       [{ header: [1, 2, false] }],
+       ['bold', 'italic'],
+       ['link', 'blockquote', 'image'],
+       [{ list: 'ordered' }, { list: 'bullet' }]
+     ]
+   },
+   placeholder: 'Compose your article here...',
+   theme: 'snow'
+ });
+ 
+ var form = document.querySelector('form');
+ form.onsubmit = function() {
+   // Populate hidden form on submit
+   var myEditor = document.querySelector('#editor-container')
+   var articleHTML = myEditor.children[0].innerHTML
+  console.log(articleHTML);
+ };
+ </script>
+
+{% include "partials/footer.html" %}

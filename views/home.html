@@ -1,0 +1,90 @@
+{% include "partials/header.html" %}
+<style>
+.jumbotron {
+  background-image: url("https://pga-tour-res.cloudinary.com/image/upload/c_fill,dpr_2.0,f_auto,g_center,h_478,q_auto,w_850/v1/pgatour/editorial/2018/04/30/tjvogel-847-MinasPanagiotakis-sm.jpg");
+  background-size: cover;
+  color: white;
+}
+</style>
+
+	<!--================Home Banner Area =================-->
+	<section class="m-3">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-12 order-md-1">
+                  <div class="jumbotron p-4 p-md-5">
+                    <div class="col-md-6 px-0">
+                      <h1 class="display-4 font-italic">T.J. Vogel Qualifies for 8th Time</h1>
+                      <p class="lead my-3">Bermuda Run, N.C  -  T.J. Vogel carded a five-under-par 66 to qualify for the Wyndham Championship on Monday. This is the eight time Vogel has successfully open qualified for a PGA Tour event this season.</p>
+                      <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Continue reading...</a></p>
+                    </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+    </section>
+    <!--================End Home Banner Area =================-->
+    <div class="container">
+        <div class="row mb-2">
+        <div class="col-md-6">
+          <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Jenny Coleman is currently 8th in OOM and her card is not yet secure...she makes birdie on first after great 9 iron to 4 ft (which of course I didnt record, but imagine it please) shes now tied for the lead <a href="https://t.co/ww9dS3jLh0">pic.twitter.com/ww9dS3jLh0</a></p>— Monday Q Info (@acaseofthegolf1) <a href="https://twitter.com/acaseofthegolf1/status/1180845265433108481?ref_src=twsrc%5Etfw">October 6, 2019</a></blockquote> 
+        </div>
+        <div class="col-md-6">
+          <blockquote class="twitter-tweet"><p lang="en" dir="ltr">.<a href="https://twitter.com/acaseofthegolf1?ref_src=twsrc%5Etfw">@acaseofthegolf1</a> chats with current <a href="https://twitter.com/hashtag/VolvikRace?src=hash&ref_src=twsrc%5Etfw">#VolvikRace</a> No. 1 <a href="https://twitter.com/PerrineDelacour?ref_src=twsrc%5Etfw">@PerrineDelacour</a> 🇫🇷 about life on Tour, getting back to the <a href="https://twitter.com/LPGA?ref_src=twsrc%5Etfw">@LPGA</a> and the challenging road to get there <a href="https://twitter.com/hashtag/DriveOn?src=hash&ref_src=twsrc%5Etfw">#DriveOn</a> <a href="https://twitter.com/hashtag/Road2LPGA?src=hash&ref_src=twsrc%5Etfw">#Road2LPGA</a> <a href="https://t.co/CJtese6oBH">https://t.co/CJtese6oBH</a></p>— Symetra Tour (@ROAD2LPGA) <a href="https://twitter.com/ROAD2LPGA/status/1179433228110839809?ref_src=twsrc%5Etfw">October 2, 2019</a></blockquote> 
+        </div>
+        </div>
+          <div class="row">
+            <div class="col-md-8 blog-main mb-3">
+              <h3 class="pb-4 mb-4 font-italic border-bottom">
+                Recent Posts
+              </h3>
+              <div class="blog-post">
+                  {% for article in articles %}
+                            <div class="card mb-3" style="max-width: 680px">
+                            <div class="row no-gutters">
+                              <div class="col-md-4">
+                                <img src={{article.imageURL}} class="card-img" style="
+                                    object-fit: contain;" alt="img" />
+                              </div>
+                              <div class="col-md-8">
+                                <div class="card-body">
+                                <p class="card-text"><small class="text-muted">{{article.category}}</small></p>
+                                  <h4 class="card-title">{{article.title}}</h4>
+                                  <p class="card-text"><small class="text-muted">{{article.dateAdded}}</small></p>
+                                  <a href="/{{article.category}}/{{article._id}}" class="stretched-link"></a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                  {% endfor %}
+                </div>
+                </div>
+
+            <aside class="col-md-4 blog-sidebar">
+              <div class="card my-4">
+                <div class="card-body">
+                  <a class="twitter-timeline" data-tweet-limit="4" href="https://twitter.com/acaseofthegolf1?ref_src=twsrc%5Etfw">Tweets by acaseofthegolf1</a>  
+                         </div>
+              </div>
+            </aside>
+      </div>
+      </div>
+    
+
+<!-- Bootstrap core JavaScript
+   ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script>
+  window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+<script>
+setInterval(function() {
+  var dataStamp = $('#startTime').text();
+
+  $('#uptime').text('Started ' + moment(dataStamp, 'x').fromNow())
+}, 1000);
+</script>
+
+{% include "partials/footer.html" %}

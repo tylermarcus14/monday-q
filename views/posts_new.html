@@ -1,0 +1,122 @@
+{% include "partials/header.html" %}
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
+<main role="main" class="container">
+    <div class="col-lg-12">
+
+        <div class="common_style">
+          <br>
+            <p class="line">Create Article</p>
+            <form action="/posts/new/add" method="post">
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label" style="color: gray;">Category</label>
+                <select class="form-control" name="category" required="required">
+                  <option value="" disabled selected>Choose your option</option>
+                  <option value="pga-tour">PGA Tour</option>
+                  <option value="korn-ferry-tour">Korn Ferry</option>
+                  <option value="lpga-tour">LPGA Tour</option>
+                  <option value="pga-tour-champions">PGA Tour Champions</option>
+                  <option value="mackenzie-tour">Mackenzie Tour - Canada</option>
+                  <option value="pga-tour-latinoamerica">PGA Tour - Latinoamerican</option>
+                  <option value="pga-tour-china">PGA Tour - China</option>
+                  <option value="qschool">Q School</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message-text" class="col-form-label" style="color: gray;">Title</label>
+                <textarea class="form-control" name="title" placeholder="Title" required="required" style="margin-top: 0px; margin-bottom: 0px; height: 35px;"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="message-text" class="col-form-label" style="color: gray;">Body</label>
+                <textarea class="form-control" name="article" placeholder="Type article here....." required="required" style="margin-top: 0px; margin-bottom: 0px; height: 835px;"></textarea>
+              </div>
+              <!-- <div class="form-group">
+                <label for="message-text" class="col-form-label" style="color: gray;">Body</label>
+                <input name="article" type="hidden">
+                <div name="articleText" id="editor-container">
+                </div>
+              </div> -->
+              <div class="form-group">
+                  <label for="recipient-name" class="col-form-label" style="color: gray;">Image URL</label>
+                  <input type="text" class="form-control" name="url" placeholder="Example: www.pgatour.com/Tiger-Woods-847-Getty.jpg"  required="required">
+                </div>
+            <button type="submit" class="btn btn-primary">Upload Article</button>
+          </form>
+
+    </div>
+
+
+</main>
+<!-- Bootstrap core JavaScript
+   ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+<!-- Include the Quill library -->
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+<!-- Initialize Quill editor -->
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script>
+  window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')
+</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script>
+$('.custom-file-input').on('change',function(){
+  $('.custom-file-label').text($(this).val().replace(/\\/g, '/').replace(/.*\//, ''));
+})
+</script>
+
+
+
+  <!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="/public/js/jquery-3.2.1.min.js"></script>
+<script src="/public/js/popper.js"></script>
+<script src="/public/js/bootstrap.min.js"></script>
+<script src="/public/js/stellar.js"></script>
+<script src="/public/js/jquery.magnific-popup.min.js"></script>
+<script src="/public/vendors/nice-select/js/jquery.nice-select.min.js"></script>
+<script src="/public/vendors/isotope/imagesloaded.pkgd.min.js"></script>
+<script src="/public/vendors/isotope/isotope-min.js"></script>
+<script src="/public/vendors/owl-carousel/owl.carousel.min.js"></script>
+<script src="/public/js/jquery.ajaxchimp.min.js"></script>
+<script src="/public/vendors/counter-up/jquery.waypoints.min.js"></script>
+<script src="/public/vendors/counter-up/jquery.counterup.min.js"></script>
+<script src="/public/js/mail-script.js"></script>
+<!--gmaps Js-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCABJW5mTKbcqfeh9s_GgFa5b5qm_v5L8Y"></script>
+<script src="/public/js/gmaps.min.js"></script>
+<script>
+  $(".nav li").removeClass("active");
+  $('#stores').addClass('active');
+</script>
+<script>
+      var quill = new Quill('#editor-container', {
+   modules: {
+     toolbar: [
+       [{ header: [1, 2, false] }],
+       ['bold', 'italic'],
+       ['link', 'blockquote', 'image'],
+       [{ list: 'ordered' }, { list: 'bullet' }]
+     ]
+   },
+   placeholder: 'Compose your article here...',
+   theme: 'snow'
+ });
+ 
+ var form = document.querySelector('form');
+ form.onsubmit = function() {
+   // Populate hidden form on submit
+   var myEditor = document.querySelector('#editor-container')
+   var articleHTML = myEditor.children[0].innerHTML
+  console.log(articleHTML);
+ };
+ </script>
+
+
+<!-- FOOTER -->
+{% include "partials/footer.html" %}
+
+</body>
+</html>
