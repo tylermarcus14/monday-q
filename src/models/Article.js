@@ -6,6 +6,7 @@ const articleSchema = new mongoose.Schema({
 	category: String,
 	title: String,
 	article: String,
+	formattedArticle: { type: String, default: '' },
 	imageURL: { type: String, default: 'https://www.swopememorialgolfcourse.com/images/slider-2.jpg' },
 	dateAdded: Date,
 	featured: { type: Boolean, default: false },

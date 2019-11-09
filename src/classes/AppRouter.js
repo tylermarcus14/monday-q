@@ -484,6 +484,7 @@ class AppRouter {
 				userName: req.user.name,
 				category: req.body.category,
 				title: req.body.title,
+				formattedArticle: req.body.formattedArticle,
 				article: req.body.article,
 				featured: req.body.featured,
 				imageURL: req.body.url,
@@ -1018,12 +1019,31 @@ class AppRouter {
 
 		});
 
+		
 		app.get('/:category/:id', (req, res) => {
 
 			Article.findById(req.params.id, (err, s) => {
 				if (s) {
-					return res.render('post', s);
-				} else {
+					let articlesList = [];
+					var day = s.dateAdded.toString().substring(0,15);
+
+						articlesList.push({
+							_id: s._id,
+							name: s.userName,
+							title: s.title,
+							category: s.category,
+							article: s.article,
+							formattedArticle: s.formattedArticle,
+							image: s.imageURL,
+							date: day
+						})
+					return res.render('post', {
+						article: articlesList,
+						articlebody: (s.formattedArticle == "") ? `${s.article}` : `${s.formattedArticle}`,
+					});
+				} 
+				
+				else {
 					return res.render('404', s);
 
 				}

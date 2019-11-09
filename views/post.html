@@ -1,4 +1,5 @@
 {% include "partials/header.html" %}
+
 <style>
 #editor-container {
   height: 975px;
@@ -8,7 +9,16 @@
     <div class="col-lg-12">
 
         <div class="common_style">
+<p>test2</p>
+{% for article in article %}
 
+<script>
+      function var1() {
+        document.getElementById('test').innerHTML = articlebody;
+      }
+      
+      window.onload = var1;
+</script>
 
 <main role="main" class="container">
     <div class="my-3 p-3 bg-white rounded box-shadow">
@@ -17,15 +27,15 @@
           <div class="row">
              <div class="col-md-12 order-md-1">
                <div class="text-center">
-                <h1 class="mb-3">{{title}}</h1>
-                <p>by {{userName}}</p><p>{{dateAdded}}</p>
+                <h1 class="mb-3">{{article.title}}</h1>
+                <p>by {{article.name}}</p><p>{{article.date}}</p>
                 </div>
                    <div class="row">
                    </div>
                    <hr class="mb-4">
                    <div class="row">
                       <div class="col-md-12 mb-3">
-                                    <img src={{imageURL}}  style=" width: 100%;
+                                    <img src={{article.image}}  style=" width: 100%;
                                     height: 30rem;
                                     object-fit: contain;" alt="..." />                              <!-- </div> -->
                       </div>
@@ -35,7 +45,8 @@
                         <div class="col-md-8 m-1">
                               <h3 class="pb-4 mb-4 font-italic border-bottom">
                                   </h3>
-                              <p>{{article}}</p>
+                                  <script type="text/javascript">document.write(article.formattedArticle)</script>
+                                  <p id="test">{{articlebody}}</p>
                          </div>
                          <div class="col-md-3 order-md-1">
                               <a class="twitter-timeline" data-tweet-limit="4" href="https://twitter.com/acaseofthegolf1?ref_src=twsrc%5Etfw">Tweets by acaseofthegolf1</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -52,6 +63,7 @@
        </small>
     </div>
    </div>
+{% endfor %}
 
  </main>
 
