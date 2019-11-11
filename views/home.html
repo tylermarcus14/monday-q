@@ -48,14 +48,15 @@
               </h3>
               <div class="blog-post">
                   {% for article in articles %}
-                            <div class="card mb-3" style="max-width: 680px">
+                            <div class="card mb-3" style="max-width: 680px; max-height: 200px;">
                             <div class="row no-gutters">
                               <div class="col-md-4">
-                                <img src={{article.imageURL}} class="card-img" style="object-fit: contain;  position: relative;
+                                <img src={{article.imageURL}} class="card-img" style="object-fit: cover;  position: relative;
                                 top: 50%;
                                 -webkit-transform: translateY(-50%);
                                 -ms-transform: translateY(-50%);
-                                transform: translateY(-50%);" alt="img" />
+                                transform: translateY(-50%);
+                                max-height: 190px;" alt="img" />
                               </div>
                               <div class="col-md-8">
                                 <div class="card-body">
