@@ -10,13 +10,6 @@
         <div class="common_style">
 {% for article in article %}
 
-<script>
-      function var1() {
-        document.getElementById('test').innerHTML = articlebody;
-      }
-      
-      window.onload = var1;
-</script>
 
 <main role="main" class="container">
     <div class="my-3 p-3 bg-white rounded box-shadow">
@@ -44,7 +37,9 @@
                               <h3 class="pb-4 mb-4 font-italic border-bottom">
                                   </h3>
                                   <script type="text/javascript">document.write(article.formattedArticle)</script>
-                                  <p id="test">{{articlebody}}</p>
+
+                                  <p id="test">{{articlebody|safe}}</p>
+
                          </div>
                          <div class="col-md-3 order-md-1">
                               <a class="twitter-timeline" data-tweet-limit="4" href="https://twitter.com/acaseofthegolf1?ref_src=twsrc%5Etfw">Tweets by acaseofthegolf1</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
