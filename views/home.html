@@ -38,17 +38,23 @@
           <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Jenny Coleman is currently 8th in OOM and her card is not yet secure...she makes birdie on first after great 9 iron to 4 ft (which of course I didnt record, but imagine it please) shes now tied for the lead <a href="https://t.co/ww9dS3jLh0">pic.twitter.com/ww9dS3jLh0</a></p>— Monday Q Info (@acaseofthegolf1) <a href="https://twitter.com/acaseofthegolf1/status/1180845265433108481?ref_src=twsrc%5Etfw">October 6, 2019</a></blockquote> 
         </div>
         <div class="col-md-6" style="margin-top: 10px;">
-            <script src="https://www.buzzsprout.com/692172.js?player=large" type="text/javascript" charset="utf-8"></script>            
+            <script src="https://www.buzzsprout.com/692172.js?player=large" type="text/javascript" charset="utf-8"></script>  
+            <div class="text-center">
+              <a href="https://podcasts.apple.com/us/podcast/any-given-monday-q/id1486702120" target="_blank"> <img src="/public/img/US_UK_Apple_Podcasts_Listen_Badge_RGB.png"/> </a>
+              <a href="https://open.spotify.com/show/1xZFIE9lGNLZaUBjUIc2VF" target="_blank"> <img src="/public/img/spotify-podcast-badge-blk-grn-165x40.png"/> </a>  
+              <a href="https://podcasts.google.com/?feed=aHR0cHM6Ly9mZWVkcy5idXp6c3Byb3V0LmNvbS82OTIxNzIucnNz" target="_blank"> <img src="/public/img/google_podcasts_badge.png"/> </a>  
+            </div>        
         </div>
+
         </div>
           <div class="row">
-            <div class="col-md-8 blog-main mb-3">
+            <div class="col-md-8 blog-main mb-3" style="padding-top: 35px">
               <h3 class="pb-4 mb-4 font-italic border-bottom">
                 Recent Posts
               </h3>
               <div class="blog-post">
                   {% for article in articles %}
-                            <div class="card mb-3" style="max-width: 680px; max-height: 200px;">
+                            <div class="card mb-3" style="max-width: 680px; max-height: 200px; min-height: 150px;">
                             <div class="row no-gutters">
                               <div class="col-md-4">
                                 <img src={{article.imageURL}} class="card-img" style="object-fit: cover;  position: relative;
@@ -61,8 +67,8 @@
                               <div class="col-md-8">
                                 <div class="card-body">
                                 <p class="card-text"><small class="text-muted">{{article.category}}</small></p>
-                                  <h4 class="card-title">{{article.title}}</h4>
-                                  <p class="card-text"><small class="text-muted">{{article.dateAdded}}</small></p>
+                                <h4 class="card-title">{{article.title}}</h4>
+                                <p class="card-text"><small class="text-muted">{{article.dateAdded}}</small></p>
                                   <a href="/{{article.category}}/{{article._id}}" class="stretched-link"></a>
                                 </div>
                               </div>
@@ -76,7 +82,7 @@
               <div class="card my-4">
                 <div class="card-body">
                   <a class="twitter-timeline"  data-tweet-limit="4" href="https://twitter.com/acaseofthegolf1?ref_src=twsrc%5Etfw">Tweets by acaseofthegolf1</a>  
-                         </div>
+                </div>
               </div>
             </aside>
       </div>
