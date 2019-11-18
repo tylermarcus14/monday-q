@@ -7,57 +7,13 @@
         <div class="common_style">
           <br>
             <p class="line">Create Article</p>
-            <form action="/posts/new/add" method="post">
-              <div class="form-group">
-                <label for="recipient-name" class="col-form-label" style="color: gray;">Category</label>
-                <select class="form-control" name="category" required="required">
-                  <option value="" disabled selected>Choose your option</option>
-                  <option value="pga-tour">PGA Tour</option>
-                  <option value="korn-ferry-tour">Korn Ferry</option>
-                  <option value="lpga-tour">LPGA Tour</option>
-                  <option value="pga-tour-champions">PGA Tour Champions</option>
-                  <option value="mackenzie-tour">Mackenzie Tour - Canada</option>
-                  <option value="pga-tour-latinoamerica">PGA Tour - Latinoamerican</option>
-                  <option value="pga-tour-china">PGA Tour - China</option>
-                  <option value="qschool">Q School</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="message-text" class="col-form-label" style="color: gray;">Title</label>
-                <textarea class="form-control" name="title" placeholder="Title" required="required" style="margin-top: 0px; margin-bottom: 0px; height: 35px;"></textarea>
-              </div>
-              <div class="form-group">
-                <label for="message-text" class="col-form-label" style="color: gray;">Body</label>
-                <textarea class="form-control" name="article" placeholder="Type article here....." required="required" style="margin-top: 0px; margin-bottom: 0px; height: 635px;"></textarea>
-              </div>
+            <form>
               <div class="form-group">
                 <label for="message-text" class="col-form-label" style="color: gray;">Body</label>
                 <input name="article" type="hidden">
                 <div name="articleText" id="editor-container">
                 </div>
               </div>
-              <div class="form-group">
-                  <label for="recipient-name" class="col-form-label" style="color: gray;">Image URL</label>
-                  <input type="text" class="form-control" name="url" placeholder="Example: www.pgatour.com/Tiger-Woods-847-Getty.jpg"  required="required">
-              </div>
-              <fieldset class="form-group">
-                <div class="row">
-                  <legend class="col-form-label col-sm-2 pt-0">Featured Article</legend>
-                  <div class="col-sm-10">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="featured" id="gridRadios1" value="false" checked>
-                      <label class="form-check-label" for="gridRadios1">
-                        NOT FEATURED
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="featured" id="gridRadios2" value="true">
-                      <label class="form-check-label" for="gridRadios2">
-                        FEATURED
-                      </label>
-                    </div>
-                  </div>
-                </div>
               </fieldset>
             <button type="submit" class="btn btn-primary">Upload Article</button>
           </form>
@@ -130,6 +86,7 @@ $('.custom-file-input').on('change',function(){
    var myEditor = document.querySelector('#editor-container')
    var articleHTML = myEditor.children[0].innerHTML
   console.log(articleHTML);
+  return false;
  };
  </script>
 

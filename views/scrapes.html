@@ -1,0 +1,105 @@
+{% include "partials/header.html" %}
+
+<main role="main" class="container">
+    <div class="col-lg-12">
+
+        <div class="common_style">
+          <br>
+            <p class="line">Create A New Post</p>
+
+  <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow" style="background-color: #3aa646;">
+    <a class="btn btn-sm btn btn-outline-light" href="/posts/new" role="button" style="margin-right: 20px;">New Post</a>
+    <div class="lh-100">
+      <h6 class="mb-0 text-white lh-100">Want to add a new article?</h6>
+      <small>Click the button to create a new article.</small>
+    </div>
+  </div>
+
+  <br>
+  <p class="line">Edit / Delete Existing Articles</p>
+  <div class="my-3 p-3 bg-white rounded box-shadow">
+    
+    <h4 class="border-bottom border-gray pb-2 mb-0">{{ count }}</h4>
+    
+
+    {% for article in articles %}
+      <div class="media text-muted pt-3">
+        <img src={{ article.imageURL }} alt="32x32" class="mr-2 rounded" style="height: 50px;"/>
+        <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <p>
+                <a>{{ article.dateAdded }}</a>  
+            </p>
+            <p>
+                <a>{{ article.category }}</a>  
+            </p>
+          <div class="d-flex justify-content-between align-items-center w-100">
+            <a href="/{{ article.category }}/{{article._id}}" target="_blank">{{article.title}}</a></strong>
+
+              <a/>
+              <p>
+            <a href="/article/delete/{{ article._id }}" style="color: red;">Delete</a>
+          
+          </p>
+          </div>
+          <p>
+            <a href="/edit/{{ article._id }}" target="_blank">Edit</a>
+          
+          </p>
+        </div>
+      </div>
+    {% endfor %}
+
+    <small class="d-block text-right mt-3">
+      </small>
+  </div>
+</div>
+</div>
+
+</main>
+<!-- Bootstrap core JavaScript
+   ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script>
+  window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')
+</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script>
+$('.custom-file-input').on('change',function(){
+  $('.custom-file-label').text($(this).val().replace(/\\/g, '/').replace(/.*\//, ''));
+})
+</script>
+
+
+<!-- FOOTER -->
+
+
+
+  <!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="/public/js/jquery-3.2.1.min.js"></script>
+<script src="/public/js/popper.js"></script>
+<script src="/public/js/bootstrap.min.js"></script>
+<script src="/public/js/stellar.js"></script>
+<script src="/public/js/jquery.magnific-popup.min.js"></script>
+<script src="/public/vendors/nice-select/js/jquery.nice-select.min.js"></script>
+<script src="/public/vendors/isotope/imagesloaded.pkgd.min.js"></script>
+<script src="/public/vendors/isotope/isotope-min.js"></script>
+<script src="/public/vendors/owl-carousel/owl.carousel.min.js"></script>
+<script src="/public/js/jquery.ajaxchimp.min.js"></script>
+<script src="/public/vendors/counter-up/jquery.waypoints.min.js"></script>
+<script src="/public/vendors/counter-up/jquery.counterup.min.js"></script>
+<script src="/public/js/mail-script.js"></script>
+<!--gmaps Js-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCABJW5mTKbcqfeh9s_GgFa5b5qm_v5L8Y"></script>
+<script src="/public/js/gmaps.min.js"></script>
+<script>
+  $(".nav li").removeClass("active");
+  $('#stores').addClass('active');
+</script>
+
+{% include "partials/footer.html" %}
+
+
+</body>
+</html>

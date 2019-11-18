@@ -6,6 +6,7 @@ const Seller = require('../models/Seller');
 const Product = require('../models/Product');
 const User = require('../models/User');
 const Article = require('../models/Article');
+const Result = require('../models/Results');
 
 const NewProduct = require('../models/NewProduct');
 
@@ -470,6 +471,102 @@ class AppRouter {
 				});
 
 		});
+
+		app.get('/scrapes', ensureAuthenticated, (req, res, next) => {
+
+			Article
+				.find()
+				.sort('-dateAdded')
+				.exec(function(err, articles) {
+
+					let articlesList = [];
+
+					for (let i = 0; i < articles.length; i++) {
+						
+						var day = articles[i].dateAdded.toString().substring(0,15);
+
+						articlesList.push({
+							_id: articles[i]._id,
+							title: articles[i].title,
+							category: articles[i].category,
+							article: articles[i].article,
+							imageURL: articles[i].imageURL,
+							dateAdded: day
+						})
+					}
+
+					return res.render('scrapes', {
+						articles: articlesList,
+						count: (articles.length == 1) ? '1 Scraped' : `${articles.length} Scraped`,
+					});
+
+				});
+
+		});
+
+		app.get('/scrape/new', ensureAuthenticated, (req, res, next) => {
+
+			Seller
+				.find({userEmail: req.user.email})
+				.exec(function(err, stores) {
+
+					let storesList = [];
+
+					for (let i = 0; i < stores.length; i++) {
+						storesList.push({
+							// color: randomColors[Math.floor(Math.random() * randomColors.length)],
+							proxies: stores[i].proxies,
+							keywords: stores[i].keywords,
+							_id: stores[i]._id,
+							url: stores[i].url,
+							lastItemAdded: stores[i].lastItemAdded,
+							lastItemCount: stores[i].lastItemCount,
+							pollMS: stores[i].pollMS
+						})
+					}
+
+					return res.render('scrape_new', {
+						stores: storesList,
+						count: (stores.length == 1) ? '1 Post' : `${stores.length} Posts`,
+						needsRestart: global.needsRestart
+					});
+
+				});
+
+		});
+
+		app.post('/scrape/new/add', (req, res, next) => {
+
+			if (req.body.category == '' || req.body.title == '' ) {
+				return res.json(200, {
+					message: 'Missing important fields to add article please try again',
+					error: true
+				})
+			}
+
+			let newArticle = new Article({
+				userName: req.user.name,
+				category: req.body.category,
+				title: req.body.title,
+				formattedArticle: req.body.formattedArticle,
+				article: req.body.article,
+				featured: req.body.featured,
+				imageURL: req.body.url,
+				dateAdded: moment(),
+				storeHash: null
+			});
+
+			newArticle.save();
+
+			return res.redirect('/scrapes');
+
+		});
+
+		app.get('/html', ensureAuthenticated, (req, res, next) => {
+					return res.render('html');
+
+			});
+
 
 		app.post('/posts/new/add', (req, res, next) => {
 
@@ -1018,6 +1115,31 @@ class AppRouter {
 			});
 
 		});
+		app.get('/results/:id', (req, res) => {
+
+			Result
+			.find()
+			.limit()
+			.sort('dateAdded')
+			.exec(function(err, results) {
+
+				let resultsList = [];
+
+				for (let i = 0; i < results.length; i++) {
+					
+					resultsList.push({
+						position: results[i].position,
+						name: results[i].name,
+						thru: results[i].thru,
+						score: results[i].score
+					})
+				}
+
+				return res.render('results', {
+					results: resultsList,
+				});
+			});
+	});
 
 		
 		app.get('/:category/:id', (req, res) => {
