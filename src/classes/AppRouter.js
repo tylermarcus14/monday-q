@@ -322,6 +322,35 @@ class AppRouter {
 				});
 		});
 
+		app.get('/results', (req, res, next) => {
+			Article
+				.find({category: 'results'})
+				.limit(10)
+				.sort('-dateAdded')
+				.exec(function(err, articles) {
+
+					let articlesList = [];
+
+					for (let i = 0; i < articles.length; i++) {
+						
+						var day = articles[i].dateAdded.toString().substring(0,15);
+
+						articlesList.push({
+							_id: articles[i]._id,
+							title: articles[i].title,
+							category: articles[i].category,
+							article: articles[i].article,
+							imageURL: articles[i].imageURL,
+							dateAdded: day
+						})
+					}
+
+					return res.render('results_list', {
+						articles: articlesList,
+					});
+				});
+		});
+
 		app.get('/podcasts', (req, res, next) => {
 			Article
 				.find({category: 'podcasts'})
