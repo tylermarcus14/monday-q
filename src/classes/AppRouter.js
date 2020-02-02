@@ -11,7 +11,7 @@ const Result = require('../models/Results');
 const NewProduct = require('../models/NewProduct');
 
 const Notify = require('../classes/Notify');
-const Twilio = require('../../twilio');
+const Scrape = require('../utils/scrape');
 const proxyUtil = require('../utils/proxy');
 const moment = require('moment');
 const fs = require('fs');
@@ -837,6 +837,14 @@ class AppRouter {
 			Twilio();
 
 			return res.redirect('/settings');
+
+		});
+
+		app.get('/scrape/push', (req, res, next) => {
+
+			Scrape();
+
+			return res.redirect('/results');
 
 		});
 
