@@ -6,17 +6,21 @@ var cheerio = require("cheerio");
 
 
 // Database configuration
-var databaseUrl =  process.env.MONGODB_URI || "golf-scrape";
+var databaseUrl =  process.env.MONGODB_URI || "mondayQ";
 var collections = ["results"];
 
+var url = "https://gapga.bluegolf.com/bluegolf/gapga19/event/gapga1949/contest/1/leaderboard.htm";
+
+//https://gapga.bluegolf.com/bluegolf/gapga19/event/gapga1949/contest/1/leaderboard.htm
 // Hook mongojs configuration to the db variable
 var db = mongojs(databaseUrl, collections);
 db.on("error", function(error) {
   console.log("Database Error:", error);
 });
 
+function Scrape () {
 
-axios.get("https://gapga.bluegolf.com/bluegolf/gapga19/event/gapga1949/contest/1/leaderboard.htm").then(function(response) {
+axios.get(url).then(function(response) {
     // Load the html body from axios into cheerio
     var $ = cheerio.load(response.data);
 
@@ -30,7 +34,7 @@ axios.get("https://gapga.bluegolf.com/bluegolf/gapga19/event/gapga1949/contest/1
 
       if (position) {
         // Insert the data in the scrapedData db
-        db.scrapedData.insert({
+        db.results.insert({
             position: position,
             name: name,
             thru: thru,
@@ -43,10 +47,11 @@ axios.get("https://gapga.bluegolf.com/bluegolf/gapga19/event/gapga1949/contest/1
           }
           else {
             // Otherwise, log the inserted data
-            console.log(inserted);
+            console.log("Scraped");
           }
         });
       }
     });
   });
-
+}
+  module.exports = Scrape

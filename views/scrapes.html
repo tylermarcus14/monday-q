@@ -5,44 +5,44 @@
 
         <div class="common_style">
           <br>
-            <p class="line">Create A New Post</p>
+            <p class="line">Create A New Results Page</p>
 
   <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow" style="background-color: #3aa646;">
-    <a class="btn btn-sm btn btn-outline-light" href="/posts/new" role="button" style="margin-right: 20px;">New Post</a>
+    <a class="btn btn-sm btn btn-outline-light" href="/scrape/new" role="button" style="margin-right: 20px;">New Post</a>
     <div class="lh-100">
-      <h6 class="mb-0 text-white lh-100">Want to add a new article?</h6>
-      <small>Click the button to create a new article.</small>
+      <h6 class="mb-0 text-white lh-100">Want to add a new leaderboard scrapped?</h6>
+      <small>Click the button to scrape.</small>
     </div>
   </div>
 
   <br>
-  <p class="line">Edit / Delete Existing Articles</p>
+  <p class="line">Edit / Delete Existing Results</p>
   <div class="my-3 p-3 bg-white rounded box-shadow">
     
     <h4 class="border-bottom border-gray pb-2 mb-0">{{ count }}</h4>
     
 
-    {% for article in articles %}
+    {% for resultsentry in resultsentries %}
       <div class="media text-muted pt-3">
-        <img src={{ article.imageURL }} alt="32x32" class="mr-2 rounded" style="height: 50px;"/>
+        <img src={{ resultsentry.imageURL }} alt="32x32" class="mr-2 rounded" style="height: 50px;"/>
         <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
             <p>
-                <a>{{ article.dateAdded }}</a>  
+                <a>{{ resultsentry.dateAdded }}</a>  
             </p>
             <p>
-                <a>{{ article.category }}</a>  
+                <a>{{ resultsentry.category }}</a>  
             </p>
           <div class="d-flex justify-content-between align-items-center w-100">
-            <a href="/{{ article.category }}/{{article._id}}" target="_blank">{{article.title}}</a></strong>
+            <a href="/{{ resultsentry.category }}/{{resultsentry._id}}" target="_blank">{{resultsentry.title}}</a></strong>
 
               <a/>
               <p>
-            <a href="/article/delete/{{ article._id }}" style="color: red;">Delete</a>
+            <a href="/resultsentry/delete/{{ resultsentry._id }}" style="color: red;">Delete</a>
           
           </p>
           </div>
           <p>
-            <a href="/edit/{{ article._id }}" target="_blank">Edit</a>
+            <a href="/edit/{{ resultsentry._id }}" target="_blank">Edit</a>
           
           </p>
         </div>

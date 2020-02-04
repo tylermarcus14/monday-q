@@ -8,11 +8,11 @@
                 Results
               </h3>
               <div class="blog-post">
-                  {% for article in articles %}
+                  {% for resultsentry in resultsentries %}
                             <div class="card mb-3" style="max-width: 680px">
                             <div class="row no-gutters">
                               <div class="col-md-4">
-                                <img src={{article.imageURL}} class="card-img" style="object-fit: contain;  position: relative;
+                                <img src={{resultsentry.imageURL}} class="card-img" style="object-fit: contain;  position: relative;
                                 top: 50%;
                                 -webkit-transform: translateY(-50%);
                                 -ms-transform: translateY(-50%);
@@ -20,10 +20,10 @@
                               </div>
                               <div class="col-md-8">
                                 <div class="card-body">
-                                <p class="card-text"><small class="text-muted">{{article.category}}</small></p>
-                                  <h4 class="card-title">{{article.title}}</h4>
-                                  <p class="card-text"><small class="text-muted">{{article.dateAdded}}</small></p>
-                                  <a href="/{{article.category}}/{{article._id}}" class="stretched-link"></a>
+                                <p class="card-text"><small class="text-muted">{{resultsentry.category}}</small></p>
+                                  <h4 class="card-title">{{resultsentry.title}}</h4>
+                                  <p class="card-text"><small class="text-muted">{{resultsentry.dateAdded}}</small></p>
+                                  <a href="/results/{{resultsentry._id}}" class="stretched-link"></a>
                                 </div>
                               </div>
                             </div>

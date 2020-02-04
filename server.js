@@ -34,7 +34,7 @@ global.logs = '';
 global.config = require('./config')
 
 const PORT = global.config.port;
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/monitrGolden";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mondayQ";
 
 
 /* MongoDB Connection */

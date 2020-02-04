@@ -2,10 +2,18 @@ const {
 	version
 } = require('../../package');
 
+
+// Dependencies
+var mongojs = require("mongojs");
+// Require axios and cheerio. This makes the scraping possible
+var axios = require("axios");
+var cheerio = require("cheerio");
+
 const Seller = require('../models/Seller');
 const Product = require('../models/Product');
 const User = require('../models/User');
 const Article = require('../models/Article');
+const ResultsEntry = require('../models/ResultsEntry');
 const Result = require('../models/Results');
 
 const NewProduct = require('../models/NewProduct');
@@ -323,32 +331,34 @@ class AppRouter {
 		});
 
 		app.get('/results', (req, res, next) => {
-			Article
-				.find({category: 'results'})
+			ResultsEntry
+				.find()
 				.limit(10)
 				.sort('-dateAdded')
-				.exec(function(err, articles) {
+				.exec(function(err, resultsentries) {
 
-					let articlesList = [];
+					let resultsList = [];
 
-					for (let i = 0; i < articles.length; i++) {
+					for (let i = 0; i < resultsentries.length; i++) {
 						
-						var day = articles[i].dateAdded.toString().substring(0,15);
+						var day = resultsentries[i].dateAdded.toString().substring(0,15);
 
-						articlesList.push({
-							_id: articles[i]._id,
-							title: articles[i].title,
-							category: articles[i].category,
-							article: articles[i].article,
-							imageURL: articles[i].imageURL,
+						resultsList.push({
+							_id: resultsentries[i]._id,
+							title: resultsentries[i].title,
+							category: resultsentries[i].category,
+							imageURL: resultsentries[i].imageURL,
 							dateAdded: day
 						})
 					}
 
+
 					return res.render('results_list', {
-						articles: articlesList,
+						resultsentries: resultsList,
 					});
+
 				});
+
 		});
 
 		app.get('/podcasts', (req, res, next) => {
@@ -503,30 +513,29 @@ class AppRouter {
 
 		app.get('/scrapes', ensureAuthenticated, (req, res, next) => {
 
-			Article
+			ResultsEntry
 				.find()
 				.sort('-dateAdded')
-				.exec(function(err, articles) {
+				.exec(function(err, resultsentries) {
 
-					let articlesList = [];
+					let resultsList = [];
 
-					for (let i = 0; i < articles.length; i++) {
+					for (let i = 0; i < resultsentries.length; i++) {
 						
-						var day = articles[i].dateAdded.toString().substring(0,15);
+						var day = resultsentries[i].dateAdded.toString().substring(0,15);
 
-						articlesList.push({
-							_id: articles[i]._id,
-							title: articles[i].title,
-							category: articles[i].category,
-							article: articles[i].article,
-							imageURL: articles[i].imageURL,
+						resultsList.push({
+							_id: resultsentries[i]._id,
+							title: resultsentries[i].title,
+							category: resultsentries[i].category,
+							imageURL: resultsentries[i].imageURL,
 							dateAdded: day
 						})
 					}
 
 					return res.render('scrapes', {
-						articles: articlesList,
-						count: (articles.length == 1) ? '1 Scraped' : `${articles.length} Scraped`,
+						resultsentries: resultsList,
+						count: (resultsentries.length == 1) ? '1 Result' : `${resultsentries.length} Results`,
 					});
 
 				});
@@ -534,33 +543,7 @@ class AppRouter {
 		});
 
 		app.get('/scrape/new', ensureAuthenticated, (req, res, next) => {
-
-			Seller
-				.find({userEmail: req.user.email})
-				.exec(function(err, stores) {
-
-					let storesList = [];
-
-					for (let i = 0; i < stores.length; i++) {
-						storesList.push({
-							// color: randomColors[Math.floor(Math.random() * randomColors.length)],
-							proxies: stores[i].proxies,
-							keywords: stores[i].keywords,
-							_id: stores[i]._id,
-							url: stores[i].url,
-							lastItemAdded: stores[i].lastItemAdded,
-							lastItemCount: stores[i].lastItemCount,
-							pollMS: stores[i].pollMS
-						})
-					}
-
-					return res.render('scrape_new', {
-						stores: storesList,
-						count: (stores.length == 1) ? '1 Post' : `${stores.length} Posts`,
-						needsRestart: global.needsRestart
-					});
-
-				});
+			return res.render('scrape_new')
 
 		});
 
@@ -573,19 +556,67 @@ class AppRouter {
 				})
 			}
 
-			let newArticle = new Article({
-				userName: req.user.name,
+			let newResultsEntry = new ResultsEntry({
 				category: req.body.category,
 				title: req.body.title,
-				formattedArticle: req.body.formattedArticle,
-				article: req.body.article,
-				featured: req.body.featured,
-				imageURL: req.body.url,
+				imageURL: req.body.imageUrl,
+				scrapeSite: req.body.scrapeSite,
+				scrapeURL: req.body.scrapeUrl,
 				dateAdded: moment(),
 				storeHash: null
 			});
 
-			newArticle.save();
+
+			newResultsEntry.save();
+			// Scrape();
+
+		// Database configuration
+		var databaseUrl =  process.env.MONGODB_URI || "mondayQ";
+		var collections = ["results"];
+
+		var url = req.body.scrapeUrl;
+
+		//https://gapga.bluegolf.com/bluegolf/gapga19/event/gapga1949/contest/1/leaderboard.htm
+		// Hook mongojs configuration to the db variable
+		var db = mongojs(databaseUrl, collections);
+		db.on("error", function(error) {
+		console.log("Database Error:", error);
+		});
+			axios.get(url).then(function(response) {
+				// Load the html body from axios into cheerio
+				var $ = cheerio.load(response.data);
+			
+				// An empty array to save the data that we'll scrape
+			
+					$("tr").each(function(i, element) {
+						var position = $(element).find("td.pos").slice(0).eq(0).text();
+						var name = $(element).find("span.d-none.d-md-inline").slice(0).eq(0).text();
+						var thru = $(element).find("td").slice(2).eq(0).text();
+						var score = $(element).find("td").slice(3).eq(0).text();
+			
+				  if (position) {
+					// Insert the data in the scrapedData db
+					db.results.insert({
+						title: req.body.title,
+						position: position,
+						name: name,
+						thru: thru,
+						score: score      
+					  },
+					function(err, inserted) {
+					  if (err) {
+						// Log the error if one is encountered during the query
+						console.log(err);
+					  }
+					  else {
+						// Otherwise, log the inserted data
+						console.log("Scraped");
+					  }
+					});
+				  }
+				});
+			  });
+
 
 			return res.redirect('/scrapes');
 
@@ -1154,8 +1185,11 @@ class AppRouter {
 		});
 		app.get('/results/:id', (req, res) => {
 
+			ResultsEntry.findById(req.params.id, (err, s) => {
+			
+
 			Result
-			.find()
+			.find({ "title": s.title })
 			.limit()
 			.sort('dateAdded')
 			.exec(function(err, results) {
@@ -1174,8 +1208,10 @@ class AppRouter {
 
 				return res.render('results', {
 					results: resultsList,
+					title: s.title
 				});
-			});
+		});
+	});
 	});
 
 		
