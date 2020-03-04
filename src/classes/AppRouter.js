@@ -873,6 +873,9 @@ class AppRouter {
 
 		app.get('/scrape/push', (req, res, next) => {
 
+
+
+
 			Scrape();
 
 			return res.redirect('/results');
@@ -1186,7 +1189,13 @@ class AppRouter {
 		app.get('/results/:id', (req, res) => {
 
 			ResultsEntry.findById(req.params.id, (err, s) => {
-			
+				
+				if (err) {
+					return res.json({
+						message: 'Please try again.',
+						error: true
+					})
+				}
 
 			Result
 			.find({ "title": s.title })
