@@ -1200,7 +1200,7 @@ class AppRouter {
 			Result
 			.find({ "title": s.title })
 			.limit()
-			.sort('dateAdded')
+			.sort()
 			.exec(function(err, results) {
 
 				let resultsList = [];
