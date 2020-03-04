@@ -591,8 +591,8 @@ class AppRouter {
 					$("tr").each(function(i, element) {
 						var position = $(element).find("td.pos").slice(0).eq(0).text();
 						var name = $(element).find("span.d-none.d-md-inline").slice(0).eq(0).text();
-						var thru = $(element).find("td").slice(2).eq(0).text();
-						var score = $(element).find("td").slice(3).eq(0).text();
+						var thru = $(element).find("td").slice(3).eq(0).text();
+						var score = $(element).find("td").slice(4).eq(0).text();
 			
 				  if (position) {
 					// Insert the data in the scrapedData db
@@ -1189,7 +1189,7 @@ class AppRouter {
 		app.get('/results/:id', (req, res) => {
 
 			ResultsEntry.findById(req.params.id, (err, s) => {
-				
+
 				if (err) {
 					return res.json({
 						message: 'Please try again.',
