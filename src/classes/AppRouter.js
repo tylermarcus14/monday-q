@@ -604,9 +604,10 @@ class AppRouter {
 		var collections = ["results"];
 
 		var url = req.body.scrapeUrl;
+		var site = req.body.scrapeSite;
 
-		//https://gapga.bluegolf.com/bluegolf/gapga19/event/gapga1949/contest/1/leaderboard.htm
-		// Hook mongojs configuration to the db variable
+		if (site == "bluegolf") {
+
 		var db = mongojs(databaseUrl, collections);
 		db.on("error", function(error) {
 		console.log("Database Error:", error);
@@ -645,6 +646,42 @@ class AppRouter {
 				  }
 				});
 			  });
+		}
+
+		if (site == "minorleague") {
+		var db = mongojs(databaseUrl, collections);
+		db.on("error", function(error) {
+		console.log("Database Error:", error);
+		});
+		axios.get(url).then(function(response) {
+			// Load the html body from axios into cheerio
+			var $ = cheerio.load(response.data);
+		
+			// An empty array to save the data that we'll scrape
+		
+			$("tr").each(function(i, element) {
+			  var position = $(element).find("td").slice(2).eq(0).text().trim();
+			  var name = $(element).find("td").slice(1).eq(0).text().trim();
+			  var thru = "18";
+			  var score = $(element).find("td").slice(0).eq(0).text().trim();
+		
+			  if (name) {
+				// Insert the data in the scrapedData db
+				console.log(position,name,thru,score),
+				function(err, inserted) {
+				  if (err) {
+					// Log the error if one is encountered during the query
+					console.log(err);
+				  }
+				  else {
+					// Otherwise, log the inserted data
+					console.log("Scraped");
+				  }
+				};
+			  }
+			});
+		  });
+		}
 
 
 			return res.redirect('/scrapes');
