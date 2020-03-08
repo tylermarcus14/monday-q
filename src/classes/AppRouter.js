@@ -301,6 +301,35 @@ class AppRouter {
 				});
 		});
 
+		app.get('/mini-tour', (req, res, next) => {
+			Article
+				.find({category: 'mini-tour'})
+				.limit(10)
+				.sort('-dateAdded')
+				.exec(function(err, articles) {
+
+					let articlesList = [];
+
+					for (let i = 0; i < articles.length; i++) {
+						
+						var day = articles[i].dateAdded.toString().substring(0,15);
+
+						articlesList.push({
+							_id: articles[i]._id,
+							title: articles[i].title,
+							category: articles[i].category,
+							article: articles[i].article,
+							imageURL: articles[i].imageURL,
+							dateAdded: day
+						})
+					}
+
+					return res.render('minitour', {
+						articles: articlesList,
+					});
+				});
+		});
+
 		app.get('/qschool', (req, res, next) => {
 			Article
 				.find({category: 'qschool'})
@@ -1215,7 +1244,7 @@ class AppRouter {
 				});
 			});
 		}
-		
+
 		else {
 			return res.render('404', s);
 

@@ -5,20 +5,18 @@ var axios = require("axios");
 var cheerio = require("cheerio");
 
 
-var url = "http://www.westfloridagolftour.com/TournamentResult.aspx?TournamentID=2075";
+var url = "http://results.swingthought.com/index.html?tourID=961";
 
 
 axios.get(url).then(function(response) {
     // Load the html body from axios into cheerio
     var $ = cheerio.load(response.data);
-
+  console.log(response.data);
     // An empty array to save the data that we'll scrape
 
-    $(".GridView:nth-of-type(1)>tbody>tr").each(function(i, element) {
+    $(".display>tbody>tr").each(function(i, element) {
 
-      if (i === 0) return true;
-
-      var position = $(element).find("td").slice(0).eq(0).text().trim();
+      var position = $(element).find("td").text().trim();
       var name = $(element).find("td").slice(1).eq(0).text().trim();
       var thru = "18";
       var score = $(element).find("td").slice(4).eq(0).text().trim();
