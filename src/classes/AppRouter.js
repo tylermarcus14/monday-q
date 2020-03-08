@@ -648,7 +648,7 @@ class AppRouter {
 			  });
 		}
 
-		if (site == "minorleague") {
+		else if (site == "minorleague") {
 		var db = mongojs(databaseUrl, collections);
 		db.on("error", function(error) {
 		console.log("Database Error:", error);
@@ -665,9 +665,15 @@ class AppRouter {
 			  var thru = "18";
 			  var score = $(element).find("td").slice(0).eq(0).text().trim();
 		
-			  if (name) {
+			  if (position) {
 				// Insert the data in the scrapedData db
-				console.log(position,name,thru,score),
+				db.results.insert({
+					title: req.body.title,
+					position: position,
+					name: name,
+					thru: thru,
+					score: score      
+				  },
 				function(err, inserted) {
 				  if (err) {
 					// Log the error if one is encountered during the query
@@ -677,7 +683,7 @@ class AppRouter {
 					// Otherwise, log the inserted data
 					console.log("Scraped");
 				  }
-				};
+				});
 			  }
 			});
 		  });
