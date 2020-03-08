@@ -301,9 +301,9 @@ class AppRouter {
 				});
 		});
 
-		app.get('/mini-tour', (req, res, next) => {
+		app.get('/mini-tours', (req, res, next) => {
 			Article
-				.find({category: 'mini-tour'})
+				.find({category: 'mini-tours'})
 				.limit(10)
 				.sort('-dateAdded')
 				.exec(function(err, articles) {
@@ -324,7 +324,7 @@ class AppRouter {
 						})
 					}
 
-					return res.render('minitour', {
+					return res.render('minitours', {
 						articles: articlesList,
 					});
 				});
@@ -606,7 +606,7 @@ class AppRouter {
 		var url = req.body.scrapeUrl;
 		var site = req.body.scrapeSite;
 
-		if (site == "bluegolf") {
+		if (site == "pgablue") {
 
 		var db = mongojs(databaseUrl, collections);
 		db.on("error", function(error) {
@@ -621,8 +621,90 @@ class AppRouter {
 					$("tr").each(function(i, element) {
 						var position = $(element).find("td.pos").slice(0).eq(0).text();
 						var name = $(element).find("td.name>a>span.d-none.d-md-inline").slice(0).eq(0).text();
-						var thru = $(element).find("td.thru").slice(0).eq(0).text();
+						var thru = $(element).find("td").slice(3).eq(0).text();
 						var score = $(element).find("td").slice(4).eq(0).text();
+			
+				  if (position) {
+					// Insert the data in the scrapedData db
+					db.results.insert({
+						title: req.body.title,
+						position: position,
+						name: name,
+						thru: thru,
+						score: score      
+					  },
+					function(err, inserted) {
+					  if (err) {
+						// Log the error if one is encountered during the query
+						console.log(err);
+					  }
+					  else {
+						// Otherwise, log the inserted data
+						console.log("Scraped");
+					  }
+					});
+				  }
+				});
+			  });
+		}
+
+		else if (site == "apt2") {
+		var db = mongojs(databaseUrl, collections);
+		db.on("error", function(error) {
+		console.log("Database Error:", error);
+		});
+			axios.get(url).then(function(response) {
+				// Load the html body from axios into cheerio
+				var $ = cheerio.load(response.data);
+			
+				// An empty array to save the data that we'll scrape
+			
+				$("tr").each(function(i, element) {
+					var position = $(element).find("td.pos").slice(0).eq(0).text();
+					var name = $(element).find("td.name>a>span.d-none.d-md-inline").slice(0).eq(0).text();
+					var thru = $(element).find("td.thru").slice(0).eq(0).text();
+					var score = $(element).find("td").slice(4).eq(0).text();
+			
+				  if (position) {
+					// Insert the data in the scrapedData db
+					db.results.insert({
+						title: req.body.title,
+						position: position,
+						name: name,
+						thru: thru,
+						score: score      
+					  },
+					function(err, inserted) {
+					  if (err) {
+						// Log the error if one is encountered during the query
+						console.log(err);
+					  }
+					  else {
+						// Otherwise, log the inserted data
+						console.log("Scraped");
+					  }
+					});
+				  }
+				});
+			  });
+		}
+
+		else if (site == "gpro" || site == "golden") {
+		var db = mongojs(databaseUrl, collections);
+		db.on("error", function(error) {
+		console.log("Database Error:", error);
+		});
+			axios.get(url).then(function(response) {
+				// Load the html body from axios into cheerio
+				var $ = cheerio.load(response.data);
+			
+				// An empty array to save the data that we'll scrape
+			
+				$("tr").each(function(i, element) {
+					var position = $(element).find("td.pos").slice(0).eq(0).text();
+					var name = $(element).find("td.name>a>span.d-none.d-md-inline").slice(0).eq(0).text();
+					var thru = $(element).find("td.thru").slice(0).eq(0).text();
+					var score = $(element).find("td").slice(3).eq(0).text();
 			
 				  if (position) {
 					// Insert the data in the scrapedData db

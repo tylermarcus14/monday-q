@@ -5,7 +5,7 @@ var axios = require("axios");
 var cheerio = require("cheerio");
 
 
-var url = "https://agpts.bluegolf.com/bluegolf/agws19/event/agws199/contest/1/leaderboard.htm";
+var url = "https://gprotour.bluegolf.com/bluegolfw/gprotour20/event/gprotour202/contest/1/leaderboard.htm";
 
 
 axios.get(url).then(function(response) {
@@ -17,7 +17,7 @@ axios.get(url).then(function(response) {
       var position = $(element).find("td.pos").slice(0).eq(0).text();
       var name = $(element).find("td.name>a>span.d-none.d-md-inline").slice(0).eq(0).text();
       var thru = $(element).find("td.thru").slice(0).eq(0).text();
-      var score = $(element).find("td").slice(4).eq(0).text();
+      var score = $(element).find("td").slice(3).eq(0).text();
 
       if (position) {
         // Insert the data in the scrapedData db

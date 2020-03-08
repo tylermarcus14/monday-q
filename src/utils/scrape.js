@@ -9,7 +9,7 @@ var cheerio = require("cheerio");
 var databaseUrl =  process.env.MONGODB_URI || "mondayQ";
 var collections = ["results"];
 
-var url = "https://gapga.bluegolf.com/bluegolf/gapga19/event/gapga1949/contest/1/leaderboard.htm";
+var url = "https://goldencuptour.bluegolf.com/bluegolf/goldencuptour20/event/goldencuptour202/contest/1/leaderboard.htm";
 
 //https://gapga.bluegolf.com/bluegolf/gapga19/event/gapga1949/contest/1/leaderboard.htm
 // Hook mongojs configuration to the db variable
