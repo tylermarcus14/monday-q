@@ -1263,6 +1263,8 @@ class AppRouter {
 			ResultsEntry.findById(req.params.id, (err, s) => {
 
 				if (s) {
+			var day = s.dateAdded.toString().substring(0,15);
+
 			Result
 			.find({ "title": s.title })
 			.limit()
@@ -1283,7 +1285,8 @@ class AppRouter {
 
 				return res.render('results', {
 					results: resultsList,
-					title: s.title
+					title: s.title,
+					date: day
 				});
 			});
 		}
