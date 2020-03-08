@@ -1190,13 +1190,7 @@ class AppRouter {
 
 			ResultsEntry.findById(req.params.id, (err, s) => {
 
-				if (err) {
-					return res.json({
-						message: 'Please try again.',
-						error: true
-					})
-				}
-
+				if (s) {
 			Result
 			.find({ "title": s.title })
 			.limit()
@@ -1219,7 +1213,13 @@ class AppRouter {
 					results: resultsList,
 					title: s.title
 				});
-		});
+			});
+		}
+		
+		else {
+			return res.render('404', s);
+
+		}
 	});
 	});
 

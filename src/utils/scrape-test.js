@@ -5,7 +5,7 @@ var axios = require("axios");
 var cheerio = require("cheerio");
 
 
-var url = "https://sflpga.bluegolf.com/bluegolf/sflpga20/event/sflpga207/contest/1/leaderboard.htm";
+var url = "http://www.westfloridagolftour.com/TournamentResult.aspx?TournamentID=2075";
 
 
 axios.get(url).then(function(response) {
@@ -14,13 +14,16 @@ axios.get(url).then(function(response) {
 
     // An empty array to save the data that we'll scrape
 
-        $("tr").each(function(i, element) {
-            var position = $(element).find("td.pos").slice(0).eq(0).text();
-            var name = $(element).find("span.d-none.d-md-inline").slice(0).eq(0).text();
-            var thru = $(element).find("td").slice(3).eq(0).text();
-            var score = $(element).find("td").slice(4).eq(0).text();
+    $(".GridView:nth-of-type(1)>tbody>tr").each(function(i, element) {
 
-      if (position) {
+      if (i === 0) return true;
+
+      var position = $(element).find("td").slice(0).eq(0).text().trim();
+      var name = $(element).find("td").slice(1).eq(0).text().trim();
+      var thru = "18";
+      var score = $(element).find("td").slice(4).eq(0).text().trim();
+
+      if (thru) {
         // Insert the data in the scrapedData db
         console.log(position,name,thru,score),
         function(err, inserted) {
