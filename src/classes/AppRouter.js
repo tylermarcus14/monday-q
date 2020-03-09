@@ -771,6 +771,45 @@ class AppRouter {
 		  });
 		}
 
+		else if (site == "elite") {
+		var db = mongojs(databaseUrl, collections);
+		db.on("error", function(error) {
+		console.log("Database Error:", error);
+		});
+		axios.get(url).then(function(response) {
+			// Load the html body from axios into cheerio
+			var $ = cheerio.load(response.data);
+			// An empty array to save the data that we'll scrape
+			$(response.data.Scores).each(function(i, element) {
+			  var position = element.Position;
+			  var name = element.Player;
+			  var thru = element.ThruHole;
+			  var score = element.TotalToPar;
+		
+			  if (position) {
+				// Insert the data in the scrapedData db
+				db.results.insert({
+					title: req.body.title,
+					position: position,
+					name: name,
+					thru: thru,
+					score: score      
+				  },
+				function(err, inserted) {
+				  if (err) {
+					// Log the error if one is encountered during the query
+					console.log(err);
+				  }
+				  else {
+					// Otherwise, log the inserted data
+					console.log("Scraped");
+				  }
+				});
+			  }
+			});
+		  });
+		}
+
 		else if (site == "minorleague") {
 		var db = mongojs(databaseUrl, collections);
 		db.on("error", function(error) {
