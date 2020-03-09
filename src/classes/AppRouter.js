@@ -912,9 +912,9 @@ class AppRouter {
 		});
 
 
-		app.get('/features', (req, res, next) => {
+		app.get('/schedule', (req, res, next) => {
 
-			return res.render('features', {});
+			return res.render('sched', {});
 		});
 
 	

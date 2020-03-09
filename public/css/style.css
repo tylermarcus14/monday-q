@@ -25,12 +25,41 @@ Author E-mail: naimlasker@gmail.com
 /* Wide Mobile Layout: 480px */
 /*---------------------------------------------------- */
 /*----------------------------------------------------*/
+
+body.offcanvas-active{
+	overflow:hidden;
+}
+.offcanvas-header{ display:none; }
+
+@media (max-width: 992px) {
+  .offcanvas-header{ display:block; }
+  .navbar-collapse {
+    position: fixed;
+    top:0; 
+    bottom: 0;
+    left: 100%;
+    width: 100%;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    overflow-y: auto;
+    visibility: hidden;
+    background-color: rgb(255, 255, 255);
+    transition: visibility .2s ease-in-out, transform .2s ease-in-out;
+    z-index: 999999;
+  }
+  .navbar-collapse.show {
+    visibility: visible;
+    transform: translateX(-100%);
+  }
+}
+
+
 body {
   line-height: 24px;
   font-size: 14px;
   font-family: "Roboto", sans-serif;
   font-weight: 500;
-  color: #777777; }
+  color: #414040; }
 
 h1,
 h2,
@@ -111,7 +140,7 @@ button:focus {
     font-size: 14px;
     font-family: "Roboto", sans-serif;
     line-height: 24px;
-    color: #777777;
+    color: #414040;
     margin-bottom: 0px;
     margin: auto; }
   .main_title.white h2 {
@@ -683,7 +712,7 @@ button:focus {
     .causes_item .causes_text p {
       font-size: 14px;
       line-height: 24px;
-      color: #777777;
+      color: #414040;
       font-weight: 300;
       margin-bottom: 0px; }
   .causes_item .causes_bottom a {
@@ -790,7 +819,7 @@ button:focus {
   .categories_post:hover h5 {
     color: #4b913d; }
   .categories_post:hover p {
-    color: #777777; }
+    color: #414040; }
   .categories_post:hover .border_line {
     background: #dddddd; }
 
@@ -811,7 +840,7 @@ button:focus {
         color: #4b913d; }
   .blog_info .blog_meta li a {
     font: 300 14px/20px "Roboto", sans-serif;
-    color: #777777;
+    color: #414040;
     vertical-align: middle;
     padding-bottom: 12px;
     display: inline-block; }
@@ -1202,7 +1231,7 @@ button:focus {
     color: #cccccc;
     margin-bottom: 13px; }
   .comments-area .comment {
-    color: #777777;
+    color: #414040;
     margin-bottom: 0px; }
   .comments-area .btn-reply {
     background-color: #fff;
@@ -1251,7 +1280,7 @@ button:focus {
     border-radius: 0px;
     width: 100%;
     font-size: 14px;
-    color: #777777;
+    color: #414040;
     border: 1px solid transparent; }
     .comment-form .form-control:focus {
       box-shadow: none;
@@ -1767,7 +1796,7 @@ button:focus {
   .element-wrap {
     margin-top: 30px; } }
 b, sup, sub, u, del {
-  color: #f8b600; }
+  color: #444444; }
 
 h1 {
   font-size: 36px; }
@@ -1788,7 +1817,7 @@ h6 {
   font-size: 14px; }
 
 .typography h1, .typography h2, .typography h3, .typography h4, .typography h5, .typography h6 {
-  color: #777777; }
+  color: #414040; }
 
 .button-area .border-top-generic {
   padding: 70px 15px;
@@ -2124,7 +2153,7 @@ h6 {
 
 .ordered-list li span {
   font-weight: 300;
-  color: #777777; }
+  color: #414040; }
 
 .ordered-list-alpha li {
   margin-left: 30px;
@@ -2135,7 +2164,7 @@ h6 {
 
 .ordered-list-alpha li span {
   font-weight: 300;
-  color: #777777; }
+  color: #414040; }
 
 .ordered-list-roman li {
   margin-left: 30px;
@@ -2146,7 +2175,7 @@ h6 {
 
 .ordered-list-roman li span {
   font-weight: 300;
-  color: #777777; }
+  color: #414040; }
 
 .single-input {
   display: block;
@@ -3627,7 +3656,7 @@ h6 {
   font-size: 14px;
   line-height: 24px;
   font-family: "Roboto", sans-serif;
-  color: #777777;
+  color: #414040;
   margin-bottom: 30px; }
   .ab_widget p a {
     color: #4b913d; }
@@ -3640,7 +3669,7 @@ h6 {
     font-size: 14px;
     line-height: 24px;
     font-family: "Roboto", sans-serif;
-    color: #777777;
+    color: #414040;
     margin-bottom: 15px; }
   .news_widget .input-group {
     position: relative;
@@ -3694,7 +3723,7 @@ h6 {
   font-size: 14px;
   line-height: 24px;
   font-family: "Roboto", sans-serif;
-  color: #777777;
+  color: #414040;
   margin-bottom: 10px; }
 .social_widget .list li {
   margin-right: 17px;
