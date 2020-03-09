@@ -3177,42 +3177,10 @@ h6 {
 @media (max-width: 991px) {
   /* Main Menu Area css
   ============================================================================================ */
-  .navbar-toggler {
-    border: none;
-    border-radius: 0px;
-    padding: 0px;
-    cursor: pointer;
-    margin-top: 27px;
-    margin-bottom: 23px; }
+ 
 
   .header_area .navbar {
     background: #000; }
-
-  .navbar-toggler[aria-expanded="false"] span:nth-child(2) {
-    opacity: 1; }
-
-  .navbar-toggler[aria-expanded="true"] span:nth-child(2) {
-    opacity: 0; }
-
-  .navbar-toggler[aria-expanded="true"] span:first-child {
-    transform: rotate(-45deg);
-    position: relative;
-    top: 7.5px; }
-
-  .navbar-toggler[aria-expanded="true"] span:last-child {
-    transform: rotate(45deg);
-    bottom: 6px;
-    position: relative; }
-
-  .navbar-toggler span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background: #fff;
-    margin: auto;
-    margin-bottom: 4px;
-    transition: all 400ms linear;
-    cursor: pointer; }
 
   .navbar .container {
     padding-left: 15px;

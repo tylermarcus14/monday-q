@@ -447,10 +447,10 @@ class AppRouter {
 
 		
   
-		app.get('/register', (req, res, next) => {
+		// app.get('/register', (req, res, next) => {
 
-			return res.render('register', {});
-		});
+		// 	return res.render('register', {});
+		// });
 
 
 		app.post('/register/success', (req, res, next) => {
