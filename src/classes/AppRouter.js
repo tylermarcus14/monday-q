@@ -362,7 +362,7 @@ class AppRouter {
 		app.get('/results', (req, res, next) => {
 			ResultsEntry
 				.find()
-				.limit(10)
+				.limit(15)
 				.sort('-dateAdded')
 				.exec(function(err, resultsentries) {
 
