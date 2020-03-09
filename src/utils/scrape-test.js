@@ -5,7 +5,7 @@ var axios = require("axios");
 var cheerio = require("cheerio");
 
 
-var url = "http://www.westfloridagolftour.com/TournamentResult.aspx?TournamentID=2075";
+var url = "http://golfstatresults.com/webservices/swt.cfc?method=getPlayerLeaderBoardSinglesXML&UID=swtdc&pwd=swtdc2015&tournament_id=961";
 
 
 axios.get(url).then(function(response) {
@@ -14,12 +14,12 @@ axios.get(url).then(function(response) {
 
   // An empty array to save the data that we'll scrape
 
-  $("#ctl00_MainContent_gvPursePlayersResults>tbody>tr").each(function(i, element) {
-    if (i === 0) return true;
-    var position = $(element).find("td").slice(0).eq(0).text().trim();
-    var name = $(element).find("td").slice(1).eq(0).text().trim();
-    var thru = "18";
-    var score = $(element).find("td").slice(4).eq(0).text().trim();
+  $("player").each(function(i, element) {
+    var position = $(element).find("current_position").text().trim();
+    var name = $(element).find("player_name").text().trim();
+    var thru = $(element).find("today_thru").text().trim();
+    var score = $(element).find("current_to_par").text().trim();
+
 
     if (position) {
       // Insert the data in the scrapedData db
