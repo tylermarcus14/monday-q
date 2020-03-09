@@ -3182,6 +3182,14 @@ h6 {
   .header_area .navbar {
     background: #000; }
 
+    .navbar-toggler {
+      border: none;
+      border-radius: 0px;
+      padding: 0px;
+      cursor: pointer;
+      margin-top: 27px;
+      margin-bottom: 23px; }
+
   .navbar .container {
     padding-left: 15px;
     padding-right: 15px; }
