@@ -689,6 +689,43 @@ class AppRouter {
 			  });
 		}
 
+		else if (site == "korn") {
+		var db = mongojs(databaseUrl, collections);
+		db.on("error", function(error) {
+		console.log("Database Error:", error);
+		});
+			axios.get(url).then(function(response) {
+				var $ = cheerio.load(response.data);			
+				$("tr").each(function(i, element) {
+					var position = $(element).find("td.pos").slice(0).eq(0).text();
+					var name = $(element).find("td.name>a>span.d-none.d-md-inline").slice(0).eq(0).text();
+					var thru = $(element).find("td").slice(2).eq(0).text();
+					var score = $(element).find("td").slice(3).eq(0).text();
+			
+				  if (position) {
+					// Insert the data in the scrapedData db
+					db.results.insert({
+						title: req.body.title,
+						position: position,
+						name: name,
+						thru: thru,
+						score: score      
+					  },
+					function(err, inserted) {
+					  if (err) {
+						// Log the error if one is encountered during the query
+						console.log(err);
+					  }
+					  else {
+						// Otherwise, log the inserted data
+						console.log("Scraped");
+					  }
+					});
+				  }
+				});
+			  });
+		}
+
 		else if (site == "gpro" || site == "golden") {
 		var db = mongojs(databaseUrl, collections);
 		db.on("error", function(error) {
