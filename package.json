@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/tylermarcus14",
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "bcryptjs": "*",
     "body-parser": "^1.18.2",
     "camaro": "^4.1.2",
